@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <h1>TEST</h1>
+   <p>Please Enter the Table Name:</p>
+   <input type="text" value = "commits" id = "inputTableName">
+   <p>Please Enter the Number of Rows</p>
+   <input type="number" value = 1 id = "inputNumOfRows">
+   <button id = "btnSearch">Search</button>
+   <p>The results are:</p>
+   <table id = "resultTable"></table>
+
+   <script>
+      const btnSearch = document.getElementById("btnSearch")
+      btnSearch.addEventListener("click", async e =>{
+         const tableName = document.getElementById("inputTableName").value
+         const firstNRows = document.getElementById("inputNumOfRows").value
+         const result = await fetch(`http://localhost:8080/test?tableName=${tableName}&firstNRows=${firstNRows}`, {method: "GET"})
+         showResults(result)
+      })
+
+      async function showResults(result){
+         try{
+            const tableResults = document.getElementById("resultTable")
+            while (tableResults.firstChild) {
+               while (tableResults.firstChild.firstChild) {
+                  tableResults.firstChild.removeChild(tableResults.firstChild.firstChild)
+                  }
+                  tableResults.removeChild(tableResults.firstChild)
+               }
+
+            const rows = await result.json()
+            if (rows.length > 0) {
+               const headRow = document.createElement("tr")
+               for (var name in rows[0]) {
+                  const headCell = document.createElement("th")
+                  headCell.textContent = name
+                  headRow.appendChild(headCell)
+               }
+               tableResults.appendChild(headRow)
+               rows.forEach(t => {
+               const contentRow = document.createElement("tr")
+               for (var name in t) {
+                  const contentCell = document.createElement("td")
+                  contentCell.textContent = t[name]
+                  contentRow.appendChild(contentCell)
+               }
+               tableResults.appendChild(contentRow)
+               })
+            }
+         }
+         catch(e){
+            console.error(`Error occurs when showing results in HTML: ${e}`)
+         }
+      }
+   </script>
+</body>
+</html>

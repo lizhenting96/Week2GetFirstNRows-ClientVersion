@@ -1,0 +1,53 @@
+Name: Zhenting Li
+Directed Research Week2
+Project Name: GetFirstNRows-ClientVersion
+Summer 2020
+----------------------------------------------
+DESCRIPTION
+
+This is a program to build a web server and serves an API which will allow 
+us to communicate from your browser to your postgres database.
+By typing in an EXISTED tablename in your database and a positive integer,
+you can get the first N rows from that table.
+
+----------------------------------------------
+ACKNOWLEDGE ANY OUTSIDE SOURCES
+
+Followed the tutorials of Hussein Nasser on YouTube:
+- Building a Web API with Express and PostgreSQL to Consume from Browser:
+  https://www.youtube.com/watch?v=0JNq46eFuOM
+  https://github.com/hnasr/javascript_playground/tree/master/express-postgres
+- Step by Step Javascript and Postgres Tutorial using node-postgres:
+  https://www.youtube.com/watch?v=ufdHsFClAk0
+  https://github.com/hnasr/javascript_playground/tree/master/javascript_postgres
+----------------------------------------------
+ENVIRONMENT SET UP AND FILE RUNNING:
+
+- Please make sure that you've successfully installed npm by checking its version:
+$ node -v
+  Or you can update npm by:
+$ npm install npm@latest -g
+
+- Please go to the project directory, and use npm to install the following package:
+$ npm install pg
+$ npm install express
+
+- Please change the database configuration in index.js to fit your database
+const client = new Client({
+   user: "postgres",
+   password: "password",
+   host: "localhost",
+   port: 5432,
+   database: "SummerDR"
+})
+
+- Run index.js by:
+$ npm run test
+or:
+$ node index.js
+
+- Go to http://localhost:8080/ in your browser
+----------------------------------------------
+KNOWN BUGS or LIMITATIONS:
+
+- If the user type in some table that does not exists in 
