@@ -50,4 +50,5 @@ $ node index.js
 ----------------------------------------------
 KNOWN BUGS or LIMITATIONS:
 
-- If the user type in some table that does not exists in 
+- If the user type in some table that does not exists in the database, the program might crash
+- If the user type in a non-positive integer or a non-integer, the program might crash
