@@ -24,7 +24,7 @@ Followed the tutorials of Hussein Nasser on YouTube:
 ENVIRONMENT SET UP AND FILE RUNNING:
 
 - Please make sure that you've successfully installed npm by checking its version:
-$ node -v
+$ npm -v
   Or you can update npm by:
 $ npm install npm@latest -g
 
