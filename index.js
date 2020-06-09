@@ -3,7 +3,7 @@ const express = require('express')
 
 const client = new Client({
    user: "postgres",
-   password: "996111lzt@",
+   password: "password",
    host: "localhost",
    port: 5432,
    database: "SummerDR"
